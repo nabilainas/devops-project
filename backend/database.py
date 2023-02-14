@@ -8,12 +8,4 @@ def get_database():
 dbname = get_database()
 collection = dbname['employee']
 
-def new_employee(username):
-   item = {
-      "Name" : username,
-   }
-
-   collection.insert_one(item)
-
-   return "done"
 
