@@ -15,10 +15,12 @@ def get_all_elements():
 
     return jsonify(result)
 
-@app.route("/api/v1/employees/<username>", methods=['GET','POST'])
-def new_user(username):
+@app.route("/api/v1/employees/<username>/<lstname>/<email>", methods=['GET','POST'])
+def new_user(username,lstname,email):
     item = {
-        "Name" : username,
+        "firstName": username,
+        "lastName": lstname,
+        "emailId": email
     }
     collection.insert_one(item)
 
