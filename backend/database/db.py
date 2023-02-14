@@ -1,17 +1,26 @@
 from pymongo import MongoClient
 def get_database():
- 
-   # Provide the mongodb atlas url to connect python to mongodb using pymongo
+   
    CONNECTION_STRING = "mongodb://localhost:27017/devopsdb"
- 
-   # Create a connection using MongoClient. You can import MongoClient or use pymongo.MongoClient
    client = MongoClient(CONNECTION_STRING)
- 
-   # Create the database for our example (we will use the same database throughout the tutorial
    return client['database']
-  
-# This is added so that many files can reuse the function get_database()
-if __name__ == "__main__":   
-  
-   # Get the database
-   dbname = get_database()
+
+dbname = get_database()
+
+def new_employee(username):
+   item = {
+      "Name" : username,
+      "max_discount" : "10%",
+      "batch_number" : "RR450020FRG",
+      "price" : 340,
+      "category" : "kitchen appliance"
+   }
+
+   collection = dbname['employee']
+   collection.insert_one(item)
+
+   return "done"
+
+def get_employee(username):
+   collection = dbname['employee']
+   return collection.find_one({"Name" : username})
