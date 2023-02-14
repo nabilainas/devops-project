@@ -6,6 +6,6 @@ def get_database():
    return client['database']
 
 dbname = get_database()
-collection = dbname['employee']
+collection = dbname['employees']
 
 
