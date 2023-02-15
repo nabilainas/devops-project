@@ -15,3 +15,4 @@ cd devops-project && docker-compose up`
       "front-angular (Interface utilisateur)" : "http://localhost/employees"
     } 
 ```
+> 🦿 projet fonctionnel pour pouvoir tester *l'api*, la *base de donnée*, et *l'interface utilisateur* - 16/02/2023
