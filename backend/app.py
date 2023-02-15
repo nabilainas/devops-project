@@ -1,32 +1,30 @@
 from flask import Flask,request, jsonify
-from bson.objectid import ObjectId
 from flask_cors import CORS
-from database import *
+from pymongo import MongoClient
+
+def get_database():
+    CONNECTION_STRING = "mongodb://nabil:ainas@mongo:27017/"
+    client = MongoClient(CONNECTION_STRING)
+    return client['database']
+
+dbname = get_database()
+collection = dbname['employees']
 
 app = Flask(__name__)
 CORS(app)
 
-@app.route("/api/v1/employees", methods=['GET'])
-def get_all_elements():
-    elements = collection.find({'_id': {'$nin': [ObjectId('63ec18ec483297cdde99e306'),  ObjectId('63ec18ecfe31bf1a0ac7a8d3') ]}})
-    result = []
-
-    for element in elements:
-        element["_id"] = str(element["_id"])
-        result.append(element)
-
-    return jsonify(result)
-
 @app.route("/api/v1/employees", methods=['GET','POST'])
-def new_user():
-    item = request.get_json()
-    item["id"] = get_new_id('id_incrementation')
-    collection.insert_one(item)
-    item["_id"] = str(item["_id"])
+def employees():
+    cursor = collection.find({}, {"_id":0})
+    list = [i for i in cursor]
+    if request.method == 'GET':
+        return jsonify(list), 200
     
-    
-
-    return item
+    if request.method == 'POST':
+        data = request.get_json()
+        data["id"] = len(list) + 1
+        collection.insert_one(data)
+        return jsonify(data), 200
 
 
 @app.route('/api/v1/employees/<int:id>', methods=['GET','PUT'])
@@ -50,5 +48,3 @@ def delete_document(id):
     else:
         return jsonify({'error': 'Document not found'}), 404
 
-if __name__ == '__main__':
-    app.run(host="localhost", port=8080, debug=True)
