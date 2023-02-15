@@ -9,9 +9,9 @@ cd devops-project && docker-compose up`
 
 ``` 
     { 
-      "back-mongodb": "mongodb://nabil:ainas@mongo:27017/", 
-      "mongo-express-1 (interface graphique)": "http://localhost:8081/", 
-      "api-flask": "http://localhost:8080/api/v1/employees", 
-      "front-angular" : "http://localhost/employees"
+      "back-mongodb (base de données)": "mongodb://nabil:ainas@mongo:27017/", 
+      "mongo-express-1 (interface graphique de la base de données)": "http://localhost:8081/", 
+      "api-flask (API)": "http://localhost:8080/api/v1/employees", 
+      "front-angular (Interface utilisateur)" : "http://localhost/employees"
     } 
 ```
