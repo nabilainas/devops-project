@@ -1,5 +1,6 @@
 # devops project 
-### with angular frontend and python backend
+## angular/python/docker
+### This project is a functionnal application contenerised
 
 *require docker desktop >* [link](https://www.docker.com/products/docker-desktop/)
 
