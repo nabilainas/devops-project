@@ -2,6 +2,7 @@ version: "3.9"
 
 services:
   api-flask:
+    image: api-flask
     container_name: api-flask
     build:
       context: backend/
@@ -9,6 +10,7 @@ services:
     ports:
       - "8080:8080"
   front-angular:
+    image: front-angular
     container_name: front-angular
     build: 
       context: frontend/
