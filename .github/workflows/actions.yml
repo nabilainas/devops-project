@@ -1,7 +1,7 @@
 #CI qui teste le backend situé dans la branche master
 
 name: testing API
-run-name: ${{ github.actor }} is testing out the API 🚀
+run-name: ${{ github.actor }} is testing out my API 🚀
 
 on: [push]
 
