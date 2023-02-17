@@ -4,7 +4,7 @@ import requests
 class TestEmployeeAPI(unittest.TestCase):
 
     def setUp(self):
-        self.base_url = 'http://localhost:8080/api/v1/employees'
+        self.base_url = 'http://localhost:8090/api/v1/employees'
         self.headers = {'Content-Type': 'application/json'}
         self.employee = {
             "firstName": "nabil",
