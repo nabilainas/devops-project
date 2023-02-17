@@ -32,7 +32,6 @@ class TestEmployeeAPI(unittest.TestCase):
             "lastName": "ainas",
             "emailId": "leboss@ainas",
         }
-        print("test")
         response = requests.put(f'{self.base_url}/{self.id_test}', json=updated_employee)
         self.assertEqual(response.status_code, 204)
     
