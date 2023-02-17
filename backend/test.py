@@ -38,6 +38,7 @@ class TestEmployeeAPI(unittest.TestCase):
     def test_5_delete_employee_by_id(self):
         response = requests.delete(f'{self.base_url}/{self.id_test}')
         print('bonjour')
+        print('test')
         self.assertEqual(response.status_code, 204)
 
 if __name__ == '__main__':
